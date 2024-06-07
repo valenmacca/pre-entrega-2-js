@@ -6,7 +6,8 @@
     <title>segunda pre-entrega</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
-<body>
+<body id="bodyNormal">
+    <button id="cambiarModoBoton" onclick="cambiarModo()">Cambiar Modo</button>
     <h1 id="title">calculadora segunda preentrega <br>
     Valentino maccaroni</h1>
     <div class="calculadora">
@@ -30,6 +31,7 @@
         <input type="button" value="c" class="botones" onclick="borrar('c')">
         <input type="button" value="ultimo digito" class="botones" onclick="borrarUnSoloDigito('borrar')">
         <input type="button" value="borrar historial" class="botones" onclick="borrarHistorial()">
+        <input type="button" value="truncar" class="botones" onclick="truncarResultado()">
         <div id="error"></div>
     </div>
     <div id="error"></div>

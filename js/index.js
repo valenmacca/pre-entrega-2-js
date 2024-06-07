@@ -8,8 +8,24 @@ let p = document.createElement("p")
 
 let pantallaCalcular2 = document.getElementById("pantalla")
 
+let buttonDeCambiar = document.getElementById("cambiarModo")
 
+let bullCambiarModo = false
 
+let bullSimedeja = false
+
+function cambiarModo(){
+    let body = document.getElementById("bodyNormal")
+    if(bullSimedeja === true){
+        body.classList.remove("bodynegro")
+        bullSimedeja = false
+    }
+    else if(bullCambiarModo === false){
+        body.classList.add("bodynegro")
+        bullSimedeja = true
+    }
+    
+}
 
 function numero(nuevocaracter) {
     let anteULtimoEsEspecial = false
@@ -76,4 +92,34 @@ function borrarHistorial(){
     <p> </p>
     `
 }
+
+function truncarResultado() {
+    const pantalla = document.getElementById("pantalla");
+    const contieneOperador = arraysCaracteres.some(caracter => pantalla.value.includes(caracter));
+
+    if (!pantalla.value && mostrarMensajeError === false) {
+        p.innerHTML = "por favor ingrese un numero para continuar"
+        p.classList.add("cambiarpdejs")
+        error.appendChild(p)
+        mostrarMensajeError = true
+    }
+    else if (pantalla.value && !contieneOperador) {
+        p.innerHTML = "ingresa un operador para hacer el calculo ";
+        p.classList.add("cambiarpdejs");
+        error.appendChild(p);
+        mostrarMensajeError = true;
+    }
+    
+    else if (pantalla.value) {
+        const resultado = Math.floor(eval(pantalla.value));
+        document.getElementById("pantalla").value = resultado;
+        let resultados = document.getElementById("resultados")
+        let mensajeResultados = document.createElement("p")
+        mensajeResultados.innerHTML = `${numeroGuardado} = ${resultado}`
+        resultados.appendChild(mensajeResultados);
+        p.innerHTML = ""
+        mostrarMensajeError = false
+    }
+}
+
 // ``
