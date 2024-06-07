@@ -9,6 +9,8 @@ let p = document.createElement("p")
 let pantallaCalcular2 = document.getElementById("pantalla")
 
 
+
+
 function numero(nuevocaracter) {
     let anteULtimoEsEspecial = false
     let nuevoCaracterEsEspecial = false
@@ -24,6 +26,7 @@ function numero(nuevocaracter) {
     });
     if(!anteULtimoEsEspecial || !nuevoCaracterEsEspecial){
         pantallaCalcular2.value += nuevocaracter;
+        numeroGuardado = pantallaCalcular2.value
     }
 }
 
@@ -35,18 +38,27 @@ function borrar() {
 
 function calcular() {
     const pantalla = document.getElementById("pantalla");
+    const contieneOperador = arraysCaracteres.some(caracter => pantalla.value.includes(caracter));
+
     if (!pantalla.value && mostrarMensajeError === false) {
         p.innerHTML = "por favor ingrese un numero para continuar"
         p.classList.add("cambiarpdejs")
         error.appendChild(p)
         mostrarMensajeError = true
     }
+    else if (pantalla.value && !contieneOperador) {
+        p.innerHTML = "ingresa un operador para hacer el calculo ";
+        p.classList.add("cambiarpdejs");
+        error.appendChild(p);
+        mostrarMensajeError = true;
+    }
+    
     else if (pantalla.value) {
         const resultado = eval(pantalla.value);
         document.getElementById("pantalla").value = resultado;
         let resultados = document.getElementById("resultados")
         let mensajeResultados = document.createElement("p")
-        mensajeResultados.innerHTML = `el resultado de tu suma es ${resultado}`
+        mensajeResultados.innerHTML = `${numeroGuardado} = ${resultado}`
         resultados.appendChild(mensajeResultados);
         p.innerHTML = ""
         mostrarMensajeError = false
@@ -58,4 +70,10 @@ function borrarUnSoloDigito() {
     pantallaBorrar.value = pantallaBorrar.value.slice(0, -1)
 }
 
+function borrarHistorial(){
+    resultados.innerHTML = `
+    <h2> resultados </h2>
+    <p> </p>
+    `
+}
 // ``
