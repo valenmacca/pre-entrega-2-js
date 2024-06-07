@@ -1,0 +1,49 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #f2f2f2;
+}
+
+#title{
+    text-align: center;
+    text-transform: capitalize;
+    margin-top: 30px;
+}
+
+.calculadora{
+width: 400px;
+height: 400px;
+padding: 50px;
+margin: auto;
+margin-top: 50px;
+border: 5px solid black;
+background-color: #808080;
+}
+
+
+
+#pantalla{
+    width: 87%;
+    height: 40px;
+}
+
+.botones{
+    width: 60px;
+    height: 60px;
+}
+
+#resultados{
+    position: relative;
+    top: -475px;
+    margin: 40px;
+}
+
+.cambiarpdejs{
+    font-size: 25px;
+    margin: 20px;
+    color: #ff0000;
+} 
